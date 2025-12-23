@@ -1,0 +1,65 @@
+import { Button, VerticalBox, HorizontalBox } from "std-widgets.slint";
+
+export component AppWindow inherits Window {
+    title: "经典记事本修复程序v1.0.0 by NeetheCheeBao";
+    min-width: 500px;
+    min-height: 300px;
+    default-font-family: "Microsoft YaHei";
+    
+    callback fix_menu_clicked();
+    callback fix_association_clicked();
+    callback open_url();
+
+    VerticalLayout {
+        Rectangle {
+            height: 30px;
+            background: #f0f0f0;
+            
+            HorizontalLayout {
+                alignment: start;
+                padding-left: 10px;
+                
+                TouchArea {
+                    width: 60px;
+                    mouse-cursor: pointer;
+                    clicked => { root.open_url() }
+                    
+                    Text {
+                        text: "项目地址";
+                        vertical-alignment: center;
+                        horizontal-alignment: center;
+                        font-size: 12px;
+                        color: #333333;
+                    }
+                }
+            }
+        }
+
+        VerticalBox {
+            alignment: center;
+            spacing: 20px;
+            
+            HorizontalBox {
+                alignment: center;
+                Button {
+                    text: "修复新建文本文档";
+                    primary: true;
+                    height: 40px;
+                    width: 220px;
+                    clicked => { root.fix_menu_clicked() }
+                }
+            }
+
+            HorizontalBox {
+                alignment: center;
+                Button {
+                    text: "还原经典记事本";
+                    primary: true;
+                    height: 40px;
+                    width: 220px;
+                    clicked => { root.fix_association_clicked() }
+                }
+            }
+        }
+    }
+}
