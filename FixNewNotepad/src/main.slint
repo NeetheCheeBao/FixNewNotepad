@@ -1,0 +1,104 @@
+import { Button, VerticalBox, HorizontalBox, ComboBox } from "std-widgets.slint";
+
+export component AppWindow inherits Window {
+    title: "经典记事本修复程序v1.0.0";
+    min-width: 500px;
+    min-height: 400px;
+    default-font-family: "Microsoft YaHei";
+    
+    callback fix_menu_clicked();
+    callback fix_association_clicked();
+    callback fix_encoding_clicked(string);
+    callback open_url();
+
+    in-out property <string> selected_encoding: "ANSI";
+
+    VerticalLayout {
+        Rectangle {
+            height: 30px;
+            background: #f0f0f0;
+            
+            HorizontalLayout {
+                alignment: start;
+                padding-left: 10px;
+                
+                TouchArea {
+                    width: 60px;
+                    mouse-cursor: pointer;
+                    clicked => { root.open_url() }
+                    
+                    Text {
+                        text: "项目地址";
+                        vertical-alignment: center;
+                        horizontal-alignment: center;
+                        font-size: 12px;
+                        color: #333333;
+                    }
+                }
+            }
+        }
+
+        VerticalBox {
+            alignment: center;
+            spacing: 20px;
+            
+            HorizontalBox {
+                alignment: center;
+                Button {
+                    text: "修复新建文本文档";
+                    primary: true;
+                    height: 40px;
+                    width: 220px;
+                    clicked => { root.fix_menu_clicked() }
+                }
+            }
+
+            HorizontalBox {
+                alignment: center;
+                Button {
+                    text: "还原经典记事本";
+                    primary: true;
+                    height: 40px;
+                    width: 220px;
+                    clicked => { root.fix_association_clicked() }
+                }
+            }
+
+            Rectangle {
+                height: 1px;
+                background: #e0e0e0;
+                width: 90%;
+            }
+
+            VerticalBox {
+                alignment: center;
+                spacing: 10px;
+
+                Text {
+                    text: "新建文本文档默认编码设置";
+                    font-size: 14px;
+                    horizontal-alignment: center;
+                }
+
+                HorizontalBox {
+                    alignment: center;
+                    spacing: 10px;
+                    
+                    ComboBox {
+                        width: 160px;
+                        height: 40px;
+                        model: ["ANSI", "UTF-16 LE", "UTF-16 BE", "UTF-8", "带有BOM的UTF-8", "GB18030"];
+                        current-value <=> root.selected_encoding;
+                    }
+
+                    Button {
+                        text: "应用编码设置";
+                        height: 40px;
+                        width: 120px;
+                        clicked => { root.fix_encoding_clicked(root.selected_encoding) }
+                    }
+                }
+            }
+        }
+    }
+}
