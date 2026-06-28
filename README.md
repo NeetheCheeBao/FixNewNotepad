@@ -8,11 +8,11 @@
 
 ## 📸 工具截图
 
-<img src="/assets/demo1.png" />
+<img src="/screenshot/demo1.png" />
 
 ## 📄 经典记事本
 
-<img src="/assets/demo2.png" />
+<img src="/screenshot/demo2.png" />
 
 ## ⬇️ 下载使用
 
