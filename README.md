@@ -14,6 +14,12 @@
 
 <img src="/screenshot/demo2.png" />
 
+## 🛠️ 本地编译
+
+```bash
+.\build.bat
+```
+
 ## ⬇️ 下载使用
 
 前往 [Releases](https://github.com/NeetheCheeBao/FixNewNotepad/releases) 下载最新版、
